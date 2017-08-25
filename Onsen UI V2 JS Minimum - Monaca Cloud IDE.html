@@ -1,0 +1,341 @@
+<html class="lang-en">
+  <meta charset="utf-8">
+  <title>Onsen UI V2 JS Minimum - Monaca Cloud IDE</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css?lang=en&8a7442ca6bedd62cec4881040b9a9e83" />
+  <link rel="stylesheet" href="/jslib/extjs4/resources/css/monaca.css?lang=en&d76224971fa049007f9cefba11535a62" />
+  <link rel="stylesheet" href="/dist/css/monaca.css?lang=en&2fa5ad12790c25b01682f45595d390d0" />
+
+  <link rel="stylesheet" href="https://cdn.monaca.io/css/monaca-components.min.css" />
+  <link rel="stylesheet" href="/dist/css/monaca.v2.css?lang=en&524651d6c3498833b2740549fe69f8bb" />
+
+  <link rel="stylesheet" href="/css/dashboard_common.css?lang=en&29139bf19a05a782da47ab1c03add800" />
+  <link rel="stylesheet" href="/css/github.min.css?lang=en&d46840456d86df0527d64565ee8098f1" />
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-526750-34', {"cookieDomain":".monaca.mobi","userId":"77174cffcaefc6ed3d5bfbe923c3adec59d2454f710987cdbd6941a56d17ecc8"}, { 'allowLinker': true });
+ga('require', 'linker');
+ga('require', 'displayfeatures');
+ga('require', 'linkid', 'linkid.js');
+ga('linker:autoLink', ['monaca.io','ja.monaca.io', 'monaca.mobi']);
+ga('send', 'pageview');
+
+ga('create', 'UA-526750-27', {"cookieDomain":".monaca.mobi","userId":"77174cffcaefc6ed3d5bfbe923c3adec59d2454f710987cdbd6941a56d17ecc8"}, { name: 'original'});
+ga('original.send', 'pageview');
+
+</script>
+
+<!-- mixpanel -->
+<script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+mixpanel.init("157efdb4829f5a9e61243fc8f5b4d0d3");
+mixpanel.identify("77174cffcaefc6ed3d5bfbe923c3adec59d2454f710987cdbd6941a56d17ecc8");
+mixpanel.register({"$created":"2017-08-17T19:26:43+09:00","$email":"jyotijaat0990@gmail.com","$name":null,"ip":"103.243.60.34","company":null,"country":"IN","is_activate":true,"is_trial":false,"language":"en","plan_name":"free","vcs":null});
+</script>
+
+<!-- Hotjar Tracking Code for monaca.mobi -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:67271,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+  <!-- Load Bower Resource Files  -->
+  <link rel="stylesheet" href="/jslib/diff2html/diff2html.min.css">
+
+  <!-- Third-Party Libraries -->
+  <!-- Load Bower Scripts -->
+  <script src="/dist/bower_components.js"></script>
+  <script>
+    var monacaIDE = angular.module('monacaIDE', ['ui.bootstrap', 'gettext', 'ngSanitize']);
+    monacaIDE.config(['$uibModalProvider', function($uibModalProvider) {
+      // $uibModalProvider.options = {
+      //   backdrop: 'static'
+      // };
+    }]);
+  </script>
+  <script src="/jslib/script.js"></script>
+  <script src="/jslib/ace/ace.js?20140403"></script>
+  <script src="/jslib/extjs4/ext-all.js"></script>
+
+  <script src="/loader.js"></script>
+
+      <script src="/src/loader.conf.en.js?c=1503121046"></script>
+  
+  <script>
+    var config = {
+      lang: 'en',
+      ideMode: '',
+      apiToken: '472a335273652fb0eec038b7c29cb0ffa742486c',
+      projectId: "59956fff803451354dbaa52d",
+      ideHost: "https://ide.monaca.mobi",
+      appHost: "https://app.monaca.mobi",
+      monacaIdeHost: "https://ide.monaca.mobi",
+      monacaWebHostSsl: 'https://monaca.mobi',
+      isNewsRead: '',
+      settingPage: +"",
+      buildPage: +"",
+      isTutorialMbaas: null,
+      isSupportedCordova: true,
+      cordovaVersion: 6.5,
+      canShareProject: false,
+
+      // User Project Panel
+      isIde: true,
+    };
+
+    window.LANG = config.lang;
+    window.MONACA_API_TOKEN = config.apiToken;
+    window.MONACA_IDE_HOST = config.monacaIdeHost;
+    window.MONACA_WEB_HOST_SSL = config.monacaWebHostSsl;
+
+    $("body").addClass("lang-" + config.lang);
+
+    monacaIDE.run(function (gettextCatalog) {
+      gettextCatalog.setCurrentLanguage(config.lang === "ja" ? "ja_JP" : "en_US");
+    });
+
+    load({
+        lang : config.lang,
+        boot : function() {
+          $(function() {
+          try {
+            Ext.BLANK_IMAGE_URL = "/img/s.gif";
+            Ext.QuickTips.init();
+            Ext.tip.QuickTipManager.init();
+
+            if (Forte == undefined || Forte.API == undefined || Forte.API.tree == undefined) {
+              location.reload(true);
+              return;
+            }
+
+            Forte.API.init({
+              projectId: config.projectId,
+              ideHost: config.ideHost,
+              appHost: config.appHost,
+              apiToken: config.apiToken
+            })
+            .done(function() {
+
+              // check config.xml parse error
+              Forte.API.readProjectSetting();
+
+              Forte.API.ideMode = config.ideMode;
+              isNewsRead = config.isNewsRead;
+
+              // Bootstrap Angular modules
+              angular.bootstrap(document.body, ['monacaIDE']);
+
+              switch (config.ideMode) {
+                case "setting":
+                  // Only display setting window
+                  $("body").addClass("mode-setting");
+                  Ext.create('Ext.container.Viewport', {
+                    layout: 'fit',
+                    items: [{
+                      xtype: 'settingPanel',
+                      id : "monaca:settings",
+                      defaultPage: config.settingPage,
+                      cls: "cell-vtabpanel forte-setting-fullscreen",
+                      preventHeader: true,
+                    }]
+                  });
+                  break;
+                case "build":
+                  // Only display build tab
+                  $("body").addClass("mode-build");
+
+                  var settingUrl = 'setting/index.html';
+                  var injector = angular.element(document.body).injector();
+                  var $modal = injector.get("$uibModal");
+                  var $compile = injector.get("$compile");
+                  var panelId = "angular:" + settingUrl;
+
+                  function getSettingsHtml() {
+                    var $templateCache = injector.get("$templateCache");
+                    return $templateCache.get(settingUrl);
+                  }
+
+                  Ext.create('Ext.container.Viewport', {
+                    layout: 'fit',
+                    items: Ext.create('Cell.tab.TabPanel', {
+                      id: "maintab",
+                      layout: 'fit',
+                      defaults: {
+                        closable: false,
+                        layout : 'fit',
+                      },
+                      activeTab: config.buildPage,
+                      items: [{
+                        id: panelId,
+                        xtype: "panel",
+                        title: Forte.Resources.Text.SETTING_TITLE,
+                        html: getSettingsHtml()
+                      }, {
+                        xtype : 'panel',
+                        title :  Forte.Resources.Text.HEADER_BUTTON_BUILD,
+                        html : '<iframe src="/page/buildSelect" class="cell-iframe-tab-content" frameborder="0"></iframe>',
+                      }]
+                    })
+                  });
+
+                  var addedEl = document.getElementById(panelId);
+                  var globalScope = angular.element(document.body).scope();
+                  $compile(angular.element(addedEl).contents())(globalScope);
+                  globalScope.$apply();
+                  break;
+                case "debugger":
+                  $("body").addClass("mode-debugger");
+                  Ext.create('Ext.container.Viewport', {
+                    layout: 'fit',
+                    items: [{
+                      xtype: 'component',
+                      html: '<iframe src="/page/debuggerSelect" class="cell-iframe-tab-content" frameborder="0"></iframe>'
+                    }]
+                  });
+                  break;
+                default:
+                  window.monaca_websocket_handler = Forte.WebSocketHandler.connect(Forte.API.apiToken);
+                  new Forte.IDE();
+
+                                  break;
+              }
+
+
+              var $scope = angular.element(document.getElementById("dashboard-controller")).scope();
+              if ($scope) {
+                $scope.currentProjectId = config.projectId;
+                $scope.$watch("projects", function() {
+                  if ($scope.projects) {
+                    for (var i = 0; i < $scope.projects.length; i++) {
+                      if ($scope.currentProjectId === $scope.projects[i].projectId) {
+                        $scope.projects[i].current = true;
+                      }
+                    }
+                    setTimeout(function() {
+                      var els = document.querySelectorAll("#forte-dashboard .projects .project");
+                      for (var i = 0; i < els.length; i++) {
+                        if ((els[i].getBoundingClientRect().top > 0) && (els[i].getBoundingClientRect().top < 250)) {
+                            angular.element(els[i]).addClass("first-child");
+                        }
+                      }
+                    }, 10);
+                  }
+                });
+              }
+
+              if (!config.isSupportedCordova) {
+                openCordovaUpgradeDialog();
+              }
+            });
+
+          } catch (e) {
+            alert("An error occured. " + e);
+            console.log(e);
+            throw e;
+          }
+        });
+      }
+    });
+
+    // Dashboard & other Angular components
+    monacaIDE.controller('ideCtrl', ['$scope', '$uibModal', '$compile', 'BaseApiService', function($scope, $modal, $compile, BaseApiService) {
+
+      BaseApiService.init({
+        apiToken: config.apiToken,
+        projectId: config.projectId,
+        ideHost: config.ideHost
+      });
+
+    }]);
+
+    switch(config.ideMode) {
+      case "setting":
+      case "build":
+      case "debugger":
+        break;
+      default:
+        loadPartial("startDialog", "#forte-dashboard");
+        loadPartial("notificationContent", "#notification-list").done(function() {
+          // set up notification for IDE
+        });
+        break;
+    }
+
+    loadPartial("dashboardContent", "#forte-dashboard");
+
+    /**
+     * Load partial via Ajax and append to specified element
+     * @param String url
+     * @param String appendTo
+     */
+    function loadPartial(url, appendTo) {
+      var dfd = $.Deferred();
+
+      $.ajax({
+        url: config.monacaWebHostSsl + "/" + config.lang + "/dashboard/partial/" + url,
+        xhrFields: {
+          withCredentials: true
+        }
+      }).done(function(result) {
+        if (appendTo) $(appendTo).append(result);
+        dfd.resolve();
+      }).fail(function() {
+        console.error("Loading " + url + " failed");
+        dfd.reject();
+      });
+
+      return dfd.promise();
+    }
+
+    // open Cordova Upgrade dialog
+    function openCordovaUpgradeDialog() {
+      var injector = angular.element(document.body).injector();
+      var $modal = injector.get("$uibModal");
+      var $templateCache = injector.get("$templateCache");
+
+      $modal.open({
+          template: $templateCache.get('dashboard/CordovaUpgradeWindow.html'),
+          controller: 'CordovaUpgradeWindowController',
+          windowClass: 'cordova-upgrade-window',
+          backdrop: 'static'
+      }).result.then(function() {
+      });
+    }
+
+  </script>
+  <script type="text/javascript">
+    // Receive Post Message
+    window.addEventListener('message', function (event) {
+      // Message from app.monaca
+      if (/^(http|https):\/\/app.(s\d*\.)?monaca.[a-z]*$/.test(event.origin)) {
+        if (event.data.action === "reload") {
+          $(window).unbind('beforeunload');
+          window.location.reload();
+        } else if (event.data.action === "reload_tree") {
+          Message.PluginDialog.Saved.send();
+        }
+      }
+
+    }, false);
+  </script>
+  <body ng-controller="ideCtrl">
+    <div id="forte-dashboard"></div>
+    <div id="forte-notification" style="z-index: 2;">
+
+      <span uib-dropdown id="notification-list"class="notification" ng-controller="notificationCtrl">
+        <a uib-dropdown-toggle style="margin:-1px 0px 0px -7px;" href="#" ng-click="openNotificationList()" ng-class="{'btn-notification': true, 'dropdown-toggle': true, 'unread': !isNewsRead}" class="dropdown-toggle">&nbsp;</a>
+      </span>
+    </div>
+  </body>
+  </html>
